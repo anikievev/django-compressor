@@ -53,10 +53,16 @@ class TestJinja2CompressorExtension(TestCase):
         settings.COMPRESS_ENABLED = org_COMPRESS_ENABLED
 
     def test_empty_tag(self):
+<<<<<<< HEAD
         template = self.env.from_string(u"""{% compress js %}{% block js %}
         {% endblock %}{% endcompress %}""")
         context = {'MEDIA_URL': settings.COMPRESS_URL}
         self.assertEqual(u'', template.render(context))
+=======
+        template = self.env.from_string("""{% compress js %}{% block js %}{% endblock %}{% endcompress %}""")
+        context = {'STATIC_URL': settings.COMPRESS_URL}
+        self.assertEqual('', template.render(context))
+>>>>>>> 5c1bd40 (Support for async/defer)
 
     def test_css_tag(self):
         template = self.env.from_string(u"""{% compress css -%}
